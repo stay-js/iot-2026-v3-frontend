@@ -20,7 +20,7 @@ class ProductResource extends JsonResource
             'product_name' => $this->product_name,
             'stock' => $this->stock,
             'price' => $this->price,
-            'type' => new TypeResource($this->type),
+            'type' => new TypeResource($this->whenLoaded('type')),
         ];
     }
 }

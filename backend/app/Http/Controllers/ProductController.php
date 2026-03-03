@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index(): JsonResource
     {
-        return ProductResource::collection(Product::all());
+        return ProductResource::collection(Product::all()->load('type'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ProductController extends Controller
     {
         $product = Product::create($request->validated());
 
-        return new ProductResource($product);
+        return new ProductResource($product->load('type'));
     }
 
     /**
@@ -33,7 +33,7 @@ class ProductController extends Controller
      */
     public function show(Product $product): JsonResource
     {
-        return new ProductResource($product);
+        return new ProductResource($product->load('type'));
     }
 
     /**
@@ -43,7 +43,7 @@ class ProductController extends Controller
     {
         $product->update($request->validated());
 
-        return new ProductResource($product);
+        return new ProductResource($product->load('type'));
     }
 
     /**
