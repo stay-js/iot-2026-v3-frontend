@@ -53,8 +53,6 @@ services:
       - ./.env:/app/.env:ro
       - /app/node_modules
       - shared_pnpm:/shared_pnpm
-    ports:
-      - "3000:3000"
     networks:
       - fullstack
     pull_policy: build

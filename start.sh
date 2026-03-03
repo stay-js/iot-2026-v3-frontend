@@ -14,6 +14,8 @@ if ! docker volume inspect shared_composer >/dev/null 2>&1; then
   docker volume create shared_composer
 fi
 
+cd frontend && pnpm install
+
 docker compose up -d
 
 docker compose exec backend composer install
