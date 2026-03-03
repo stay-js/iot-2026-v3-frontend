@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -12,16 +12,9 @@ import {
 import { type Products } from '@/lib/products';
 import { cn } from '@/lib/utils';
 
-import { Button } from './ui/button';
-
-export type ProductsTableProps = {
-  isLoading: boolean;
-  products: Products | undefined;
-};
-
 const COLUMNS = ['Gyártó', 'Termék neve', 'Típus', 'Készlet', 'Ár'];
 
-export function ProductsTable({ isLoading, products }: ProductsTableProps) {
+export function ProductsTable({ products }: { products: Products | undefined }) {
   return (
     <Table>
       <TableHeader>
@@ -33,17 +26,6 @@ export function ProductsTable({ isLoading, products }: ProductsTableProps) {
       </TableHeader>
 
       <TableBody>
-        {isLoading &&
-          Array.from({ length: 5 }).map((_, index) => (
-            <TableRow className={cn(index % 2 === 0 ? 'bg-sky-100' : 'bg-indigo-100')} key={index}>
-              {COLUMNS.map((col) => (
-                <TableCell className="p-3" key={col}>
-                  <Skeleton className="h-4 w-24" />
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-
         {products?.map((product, index) => (
           <TableRow
             className={cn(index % 2 === 0 ? 'bg-sky-100' : 'bg-indigo-100')}

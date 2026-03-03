@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 
 import { ProductsTable } from '@/components/products-table';
@@ -9,13 +9,13 @@ export const Route = createFileRoute('/')({
 });
 
 function RouteComponent() {
-  const { data: products, isLoading } = useQuery(getProducts());
+  const { data: products } = useSuspenseQuery(getProducts());
 
   return (
     <div className="container flex flex-col gap-6 py-12">
       <h1 className="text-2xl font-bold">Termékek</h1>
 
-      <ProductsTable isLoading={isLoading} products={products?.data} />
+      <ProductsTable products={products?.data} />
     </div>
   );
 }
