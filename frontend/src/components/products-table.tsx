@@ -34,7 +34,7 @@ export function ProductsTable({ products }: { products: Products }) {
             <TableCell className="p-3">{product.manufacturer}</TableCell>
             <TableCell className="p-3">
               <Button asChild className="h-fit p-0" variant="link">
-                <Link params={{ id: String(product.id) }} to="/product/$id">
+                <Link params={{ id: String(product.id) }} to="/products/$id">
                   {product.product_name}
                 </Link>
               </Button>

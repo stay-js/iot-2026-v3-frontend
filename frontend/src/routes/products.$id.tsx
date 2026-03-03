@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/empty';
 import { getProduct } from '@/lib/products';
 
-export const Route = createFileRoute('/product/$id')({
+export const Route = createFileRoute('/products/$id')({
   component: RouteComponent,
   errorComponent: () => (
     <div className="grid h-full min-h-screen place-content-center">
