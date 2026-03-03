@@ -3,6 +3,8 @@ import { z } from 'zod';
 
 import { createApiResponseSchema, GET } from '@/lib/api';
 
+export type Types = z.infer<typeof typesSchema>;
+
 export const typeSchema = z.object({
   id: z.number().int().positive(),
   name: z.string().max(35),
