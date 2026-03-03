@@ -16,7 +16,7 @@ const COLUMNS = ['Gyártó', 'Termék neve', 'Típus', 'Készlet', 'Ár'];
 
 export function ProductsTable({ products }: { products: Products }) {
   return (
-    <Table>
+    <Table className="border">
       <TableHeader>
         <TableRow>
           {COLUMNS.map((col) => (
@@ -40,7 +40,7 @@ export function ProductsTable({ products }: { products: Products }) {
               </Button>
             </TableCell>
             <TableCell className="p-3">
-              <span className="bg-sky-700 p-2 text-white">{product.type.name}</span>
+              <span className="rounded-sm bg-sky-700 p-2 text-white">{product.type.name}</span>
             </TableCell>
             <TableCell className="p-3">{product.stock}</TableCell>
             <TableCell className="p-3">{product.price.toLocaleString('hu-HU')} Ft</TableCell>
