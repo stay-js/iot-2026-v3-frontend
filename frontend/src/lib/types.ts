@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { queryOptions } from '@tanstack/react-query';
 import { z } from 'zod';
 
 import { createApiResponseSchema, GET } from '@/lib/api';
@@ -13,14 +13,14 @@ const typesSchema = z.array(typeSchema);
 const typesResonseSchema = createApiResponseSchema(typesSchema);
 
 export function getType(id: number) {
-  return useQuery({
+  return queryOptions({
     queryFn: () => GET(`/api/types/${id}`, typeResonseSchema),
     queryKey: ['types', 'show', { id }],
   });
 }
 
 export function getTypes() {
-  return useQuery({
+  return queryOptions({
     queryFn: () => GET('/api/types', typesResonseSchema),
     queryKey: ['types', 'index'],
   });

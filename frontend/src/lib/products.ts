@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { mutationOptions, queryOptions } from '@tanstack/react-query';
 import { z } from 'zod';
 
 import { createApiResponseSchema, GET, POST } from '@/lib/api';
@@ -38,21 +38,23 @@ const productResponseSchema = createApiResponseSchema(productSchema);
 const productsSchema = z.array(productSchema);
 const productsResponseSchema = createApiResponseSchema(productsSchema);
 
-export function createProduct(data: CreateProductData) {
-  return useMutation({
-    mutationFn: () => POST('/api/products', data, productResponseSchema),
+export type Products = z.infer<typeof productsSchema>;
+
+export function createProduct() {
+  return mutationOptions({
+    mutationFn: (data: CreateProductData) => POST('/api/products', data, productResponseSchema),
   });
 }
 
 export function getProduct(id: number) {
-  return useQuery({
+  return queryOptions({
     queryFn: () => GET(`/api/products/${id}`, productResponseSchema),
     queryKey: ['products', 'show', { id }],
   });
 }
 
 export function getProducts() {
-  return useQuery({
+  return queryOptions({
     queryFn: () => GET('/api/products', productsResponseSchema),
     queryKey: ['products', 'index'],
   });
