@@ -14,8 +14,7 @@ function RouteComponent() {
   return (
     <div className="container flex flex-col gap-6 py-12">
       <h1 className="text-2xl font-bold">Termékek</h1>
-
-      <ProductsTable products={products?.data} />
+      {products && <ProductsTable products={products.data} />}
     </div>
   );
 }

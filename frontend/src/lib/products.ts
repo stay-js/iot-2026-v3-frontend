@@ -46,7 +46,7 @@ export function createProduct() {
   });
 }
 
-export function getProduct(id: number) {
+export function getProduct(id: string) {
   return queryOptions({
     queryFn: () => GET(`/api/products/${id}`, productResponseSchema),
     queryKey: ['products', 'show', { id }],

@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 
 const COLUMNS = ['Gyártó', 'Termék neve', 'Típus', 'Készlet', 'Ár'];
 
-export function ProductsTable({ products }: { products: Products | undefined }) {
+export function ProductsTable({ products }: { products: Products }) {
   return (
     <Table>
       <TableHeader>
@@ -26,7 +26,7 @@ export function ProductsTable({ products }: { products: Products | undefined }) 
       </TableHeader>
 
       <TableBody>
-        {products?.map((product, index) => (
+        {products.map((product, index) => (
           <TableRow
             className={cn(index % 2 === 0 ? 'bg-sky-100' : 'bg-indigo-100')}
             key={product.id}
