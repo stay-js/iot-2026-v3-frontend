@@ -12,8 +12,9 @@ function RouteComponent() {
   const { data: products } = useSuspenseQuery(getProducts());
 
   return (
-    <div className="container flex flex-col gap-6 py-12">
+    <div className="container flex flex-col gap-6 px-6 py-12">
       <h1 className="text-2xl font-bold">Termékek</h1>
+
       {products && <ProductsTable products={products.data} />}
     </div>
   );
